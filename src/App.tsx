@@ -1,24 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import CarsList from "./carsList";
+import CarDetails from "./carDetails";
+import NavBar from "./navbar";
+import NotFound from "./404";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p className={"bg-blue-500"}>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="flex flex-col flex-1 min-h-screen h-full relative">
+      <header className="md:h-20">
+        <NavBar />
       </header>
+      <hr />
+      <main className="p-12">
+        <Routes>
+          <Route path={"/"} element={<CarsList />} />
+          <Route path={"/car"} element={<CarDetails />} />
+          <Route path={"*"} element={<NotFound />} />
+        </Routes>
+      </main>
+      <div className="absolute bottom-0 w-full">
+        <hr />
+        <footer className="flex w-full justify-center p-4 bg-white shadow items-center md:p-6 dark:bg-gray-800 min-h-20">
+          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+            ©{" "}
+            <a href="https://Auto1.com/" className="hover:underline">
+              AUTO1 Group
+            </a>{" "}
+            2018
+          </span>
+        </footer>
+      </div>
     </div>
   );
 }
