@@ -73,4 +73,3 @@ export const CarsList = () => {
     </div>
   );
 };
-export default CarsList;

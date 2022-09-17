@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../logo-auto1.svg";
 
-const CarDetails = () => {
+export const CarDetails = () => {
   return (
     <div className="flex flex-col flex-1 bg-white shadow-md dark:bg-gray-800">
       <img className=" bg-light-gray w-full h-auto" src={logo} alt="" />
@@ -38,5 +38,3 @@ const CarDetails = () => {
     </div>
   );
 };
-
-export default CarDetails;
