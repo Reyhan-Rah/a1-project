@@ -16,23 +16,23 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/*<Router>*/}
-      <div className="flex flex-col flex-1 min-h-screen h-full relative">
-        <Header />
-        <hr />
-        <main className="flex flex-1 bg-white dark:bg-gray-800">
-          <Routes>
-            <Route path={"/"} element={<CarsList />} />
-            <Route path={"/:stockNumber"} element={<CarDetails />} />
-            <Route path={"/purchase"} element={<Purchase />} />
-            <Route path={"/orders"} element={<Orders />} />
-            <Route path={"/sell"} element={<Sell />} />
-            <Route path={"*"} element={<NotFound />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-      {/*</Router>*/}
+      <Router>
+        <div className="flex flex-col flex-1 min-h-screen h-full relative">
+          <Header />
+          <hr />
+          <main className="flex flex-1 bg-white dark:bg-gray-800">
+            <Routes>
+              <Route path={"/"} element={<CarsList />} />
+              <Route path={"/:stockNumber"} element={<CarDetails />} />
+              <Route path={"/purchase"} element={<Purchase />} />
+              <Route path={"/orders"} element={<Orders />} />
+              <Route path={"/sell"} element={<Sell />} />
+              <Route path={"*"} element={<NotFound />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
     </QueryClientProvider>
   );
 }
