@@ -11,13 +11,13 @@ export const Card = ({
   pictureUrl,
 }: ICarData) => {
   return (
-    <div className="flex flex-col items-center bg-white border md:flex-row  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 my-3">
+    <div className="flex flex-col items-center bg-white border md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 my-3">
       <img
-        className="object-contain w-full h-auto md:h-32 md:w-48 md:rounded-none md:m-3 bg-light-gray"
+        className="w-full h-auto md:h-36 md:w-48 md:m-3 bg-light-gray"
         src={pictureUrl}
         alt={modelName}
       />
-      <div className="flex flex-col justify-between p-4 leading-normal">
+      <div className="p-4 ">
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-dark-gray dark:text-white">
           {manufacturerName} {modelName}
         </h5>

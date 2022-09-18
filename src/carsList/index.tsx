@@ -3,7 +3,8 @@ import { Outlet } from "react-router-dom";
 import { Card } from "./card";
 import { Select } from "../components/select";
 import { useFetchCarsList } from "../api/fetchCarsList";
-import { Loading } from "../components/loading";
+import { Skeleton } from "../components/skeleton";
+import { NotFound } from "../404";
 
 export const CarsList = () => {
   const {
@@ -13,12 +14,12 @@ export const CarsList = () => {
   } = useFetchCarsList({ page: 1 });
 
   return (
-    <div className={"w-full p-8 grid md:grid-cols-10 gap-8 md:mx-8"}>
-      <div className={"col-span-3"}>
-        <div className="px-2 py-8 md:p-8 max-w-sm bg-white mx-auto md:mx-8 mt-8 md:mt-0 border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+    <div className={"flex flex-1 flex-col lg:flex-row w-full p-8 lg:mx-8"}>
+      <div className={"lg:w-1/3 mb-12 lg:mb-0 items-end"}>
+        <div className="px-2 py-8 lg:p-8 max-w-lg bg-white mx-auto lg:mx-8 mt-8 lg:mt-0 border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
           <Select />
           <Select />
-          <div className={"flex justify-center md:justify-end"}>
+          <div className={"flex justify-center lg:justify-end"}>
             <button
               onClick={() => console.log("save car")}
               className="items-center justify-center w-32 h-8 text-sm font-medium text-center text-white bg-light-orange rounded-sm hover:bg-dark-orange focus:bg-dark-orange mt-3"
@@ -28,37 +29,30 @@ export const CarsList = () => {
           </div>
         </div>
       </div>
-
-      <div className={"col-span-7"}>
+      {carsListError && <NotFound />}
+      <div className={"lg:w-2/3"}>
         <h3 className="mb-3 text-2xl font-bold tracking-tight text-dark-gray dark:text-white">
           Available Cars
         </h3>
+        <p className="mb-6 text-2xl font-normal tracking-tight text-dark-gray dark:text-white">
+          showing 10 of 100 results
+        </p>
         {carsListLoading ? (
-          <Loading />
-        ) : carsListError ? (
-          <p className="text-2xl font-bold text-dark-gray dark:text-white">
-            sth went wrong!
-          </p>
+          <Skeleton />
         ) : (
           <>
-            <p className="mb-6 text-2xl font-normal tracking-tight text-dark-gray dark:text-white">
-              showing 10 of 100 results
-            </p>
-            {carsList?.cars?.map(
-              (car) =>
-                car && (
-                  <Card
-                    key={car.stockNumber}
-                    stockNumber={car.stockNumber}
-                    manufacturerName={car.manufacturerName}
-                    modelName={car.modelName}
-                    mileage={car.mileage}
-                    fuelType={car.fuelType}
-                    color={car.color}
-                    pictureUrl={car.pictureUrl}
-                  />
-                )
-            )}
+            {carsList?.cars?.map((car) => (
+              <Card
+                key={car.stockNumber}
+                stockNumber={car.stockNumber}
+                manufacturerName={car.manufacturerName}
+                modelName={car.modelName}
+                mileage={car.mileage}
+                fuelType={car.fuelType}
+                color={car.color}
+                pictureUrl={car.pictureUrl}
+              />
+            ))}
           </>
         )}
       </div>
