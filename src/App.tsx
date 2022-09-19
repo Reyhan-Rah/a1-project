@@ -20,7 +20,7 @@ function App() {
         <div className="flex flex-col flex-1 min-h-screen h-full relative">
           <Header />
           <hr />
-          <main className="flex flex-1 bg-white dark:bg-gray-800">
+          <main className="flex flex-1 bg-white dark:bg-gray-800 mb-20">
             <Routes>
               <Route path={"/"} element={<CarsList />} />
               <Route path={"/:stockNumber"} element={<CarDetails />} />
