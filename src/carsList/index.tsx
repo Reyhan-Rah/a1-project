@@ -2,32 +2,22 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import { Card } from "./card";
 import { Select } from "../components/select";
-import { useFetchCarsList } from "../api/fetchCarsList";
+import { useGetCarsList } from "../api/getCarsList";
 import { Skeleton } from "../components/skeleton";
 import { NotFound } from "../404";
+import { FiltersBox } from "./filtersBox";
 
 export const CarsList = () => {
   const {
     data: carsList,
     isLoading: carsListLoading,
     error: carsListError,
-  } = useFetchCarsList({ page: 1 });
+  } = useGetCarsList({ page: 1 });
 
   return (
     <div className={"flex flex-1 flex-col lg:flex-row w-full p-8 lg:mx-8"}>
       <div className={"lg:w-1/3 mb-12 lg:mb-0 items-end"}>
-        <div className="px-2 py-8 lg:p-8 max-w-lg bg-white mx-auto lg:mx-8 mt-8 lg:mt-0 border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-          <Select />
-          <Select />
-          <div className={"flex justify-center lg:justify-end"}>
-            <button
-              onClick={() => console.log("save car")}
-              className="items-center justify-center w-32 h-8 text-sm font-medium text-center text-white bg-light-orange rounded-sm hover:bg-dark-orange focus:bg-dark-orange mt-3"
-            >
-              Save
-            </button>
-          </div>
-        </div>
+        <FiltersBox />
       </div>
       {carsListError && <NotFound />}
       <div className={"lg:w-2/3"}>

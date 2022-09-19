@@ -1,8 +1,8 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
-import { ICarData } from "./fetchCarsList";
+import { ICarData } from "./getCarsList";
 import { baseURL } from "../consts";
 
-export async function fetchCarDetails(stockNumber: number) {
+export async function getCarDetails(stockNumber: number) {
   try {
     const carDetails = await fetch(baseURL + "/api/cars/" + stockNumber, {});
     return carDetails.json();
@@ -15,12 +15,12 @@ interface ICarDetailsData {
   car: ICarData;
 }
 
-export default function useFetchCarDetails(
+export default function useGetCarDetails(
   stockNumber: number
 ): UseQueryResult<ICarDetailsData, Error> {
   return useQuery<ICarDetailsData, Error>(
     ["A car", stockNumber],
-    () => fetchCarDetails(stockNumber),
+    () => getCarDetails(stockNumber),
     {
       staleTime: 50000,
       enabled: !!stockNumber,

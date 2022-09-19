@@ -8,7 +8,7 @@ interface ICarsListParams {
   page?: number;
 }
 
-export async function fetchCarsList({}: ICarsListParams) {
+export async function getCarsList({}: ICarsListParams) {
   try {
     const carsList = await fetch(baseURL + "/api/cars", {});
     return carsList.json();
@@ -33,7 +33,7 @@ export interface ICarsListData {
   totalCarsCount: number;
 }
 
-export function useFetchCarsList(
+export function useGetCarsList(
   params: ICarsListParams
 ): UseQueryResult<ICarsListData, Error> {
   return useQuery<ICarsListData, Error>(
@@ -46,7 +46,7 @@ export function useFetchCarsList(
         page: params.page,
       },
     ],
-    () => fetchCarsList(params),
+    () => getCarsList(params),
     {
       staleTime: 50000,
     }
