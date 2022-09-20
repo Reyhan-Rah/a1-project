@@ -16,7 +16,7 @@ export const Pagination = ({ totalPageCount }: IPagination) => {
           newSearchParams.set("page", "1");
           setSearchParams(newSearchParams);
         }}
-        className="inline-flex items-center py-2 px-4 text-sm font-medium text-light-orange bg-white hover:text-dark-orange hover:underline dark:text-gray-400 dark:hover:text-white"
+        className="inline-flex items-center py-2 px-4 text-sm font-medium text-light-orange hover:text-dark-orange hover:underline dark:text-light-gray dark:hover:text-white disabled:text-dark-gray"
       >
         First
       </button>
@@ -27,7 +27,7 @@ export const Pagination = ({ totalPageCount }: IPagination) => {
           setSearchParams(newSearchParams);
         }}
         disabled={currentPage === 1}
-        className="inline-flex items-center py-2 px-4 text-sm font-medium text-light-orange bg-white hover:text-dark-orange hover:underline dark:text-gray-400 dark:hover:text-white disabled:text-dark-gray dark:disabled:text-light-gray"
+        className="inline-flex items-center py-2 px-4 text-sm font-medium text-light-orange hover:text-dark-orange hover:underline dark:text-light-gray dark:hover:text-white disabled:text-dark-gray dark:disabled:text-gray-400"
       >
         Previous
       </button>
@@ -47,7 +47,7 @@ export const Pagination = ({ totalPageCount }: IPagination) => {
           );
           setSearchParams(newSearchParams);
         }}
-        className="inline-flex items-center py-2 px-4 text-sm font-medium text-light-orange bg-white hover:text-dark-orange hover:underline dark:text-gray-400 dark:hover:text-white disabled:text-dark-gray dark:disabled:text-light-gray"
+        className="inline-flex items-center py-2 px-4 text-sm font-medium text-light-orange hover:text-dark-orange hover:underline dark:text-light-gray dark:hover:text-white disabled:text-dark-gray dark:disabled:text-gray-400"
         disabled={currentPage === totalPageCount}
       >
         Next
@@ -58,7 +58,7 @@ export const Pagination = ({ totalPageCount }: IPagination) => {
           newSearchParams.set("page", String(totalPageCount));
           setSearchParams(newSearchParams);
         }}
-        className="inline-flex items-center py-2 px-4 text-sm font-medium text-light-orange bg-white hover:text-dark-orange hover:underline dark:text-gray-400 dark:hover:text-white"
+        className="inline-flex items-center py-2 px-4 text-sm font-medium text-light-orange hover:text-dark-orange hover:underline dark:text-light-gray dark:hover:text-white disabled:text-dark-gray"
       >
         Last
       </button>
