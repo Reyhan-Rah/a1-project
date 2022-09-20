@@ -1,13 +1,14 @@
 import { screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import { renderWithRoute } from "../../../setupTests";
 import { Card } from "./index";
 
 describe("Card tests", () => {
   test("View details link", async () => {
+    const stockNumber = 1111;
+
     renderWithRoute(
       <Card
-        stockNumber={1111}
+        stockNumber={stockNumber}
         manufacturerName={"Fiat"}
         modelName={"Marea"}
         mileage={{ number: 100141, unit: "km" }}
@@ -19,10 +20,7 @@ describe("Card tests", () => {
       />
     );
 
-    const detailsButton = screen.getByText(/View Details/i);
-    userEvent.click(detailsButton);
-
-    // const details = await screen.findByText(/This car is currently available/i);
-    // expect(details).toBeInTheDocument();
+    const link = screen.getByText(/View details/i);
+    expect(link.getAttribute("href")).toBe(`/${stockNumber}`);
   });
 });

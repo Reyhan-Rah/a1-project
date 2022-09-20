@@ -30,14 +30,12 @@ export const Card = ({
           {"- "}
           {color}
         </p>
-        <a href={`/${stockNumber}`}>
-          <p
-            className={
-              "text-light-orange hover:text-dark-orange hover:underline"
-            }
-          >
-            View details
-          </p>
+
+        <a
+          href={`/${stockNumber}`}
+          className={"text-light-orange hover:text-dark-orange hover:underline"}
+        >
+          View details
         </a>
       </div>
     </div>
