@@ -5,6 +5,7 @@ import { useGetCarsList } from "../api/getCarsList";
 import { Skeleton } from "../components/skeleton";
 import { NotFound } from "../404";
 import { FiltersBox } from "./filtersBox";
+import { Pagination } from "../components/pagination";
 
 export const CarsList = () => {
   let [searchParams] = useSearchParams();
@@ -13,7 +14,7 @@ export const CarsList = () => {
     isLoading: carsListLoading,
     error: carsListError,
   } = useGetCarsList({
-    page: 1,
+    page: parseInt(searchParams.get("page") || "1"),
     color: searchParams.get("color") || "",
     manufacturer: searchParams.get("manufacturer") || "",
   });
@@ -32,7 +33,7 @@ export const CarsList = () => {
           showing 10 of 100 results
         </p>
         {carsListLoading ? (
-          <Skeleton />
+          [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(() => <Skeleton />)
         ) : (
           <>
             {carsList?.cars?.map((car) => (
@@ -47,6 +48,9 @@ export const CarsList = () => {
                 pictureUrl={car.pictureUrl}
               />
             ))}
+            {carsList?.totalPageCount && (
+              <Pagination totalPageCount={carsList.totalPageCount} />
+            )}
           </>
         )}
       </div>
