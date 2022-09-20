@@ -57,13 +57,13 @@ export const FiltersBox = () => {
         name={"color"}
         label={"Color"}
         options={colors?.colors}
-        selectedOption={"All car colors"}
+        noSelectionTitle={"All car colors"}
       />
       <Select
         name={"manufacturer"}
         label={"Manufacturer"}
         options={manufacturers}
-        selectedOption={"All manufacturers"}
+        noSelectionTitle={"All manufacturers"}
       />
       <div className={"flex justify-center lg:justify-end"}>
         <button
