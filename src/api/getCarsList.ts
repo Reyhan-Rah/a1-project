@@ -8,9 +8,14 @@ interface ICarsListParams {
   page?: number;
 }
 
-export async function getCarsList({}: ICarsListParams) {
+export async function getCarsList({ ...params }: ICarsListParams) {
   try {
-    const carsList = await fetch(baseURL + "/api/cars", {});
+    const carsList = await fetch(
+      baseURL +
+        "/api/cars" +
+        `?page=${params?.page}&color=${params.color}&manufacturer=${params.manufacturer}`,
+      {}
+    );
     return carsList.json();
   } catch (e) {
     console.debug(e, " e");

@@ -1,18 +1,22 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useSearchParams } from "react-router-dom";
 import { Card } from "./card";
-import { Select } from "../components/select";
 import { useGetCarsList } from "../api/getCarsList";
 import { Skeleton } from "../components/skeleton";
 import { NotFound } from "../404";
 import { FiltersBox } from "./filtersBox";
 
 export const CarsList = () => {
+  let [searchParams] = useSearchParams();
   const {
     data: carsList,
     isLoading: carsListLoading,
     error: carsListError,
-  } = useGetCarsList({ page: 1 });
+  } = useGetCarsList({
+    page: 1,
+    color: searchParams.get("color") || "",
+    manufacturer: searchParams.get("manufacturer") || "",
+  });
 
   return (
     <div className={"flex flex-1 flex-col lg:flex-row w-full p-8 lg:mx-8"}>

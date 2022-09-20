@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Select } from "../components/select";
 import { useGetColors } from "../api/getColors";
 import { useGetManufacturers } from "../api/getManufacturers";
@@ -8,6 +9,7 @@ import { NotFound } from "../404";
 export const FiltersBox = () => {
   const [color, setColor] = useState("");
   const [manufacturer, setManufacturer] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
   const {
     data: colors,
     isLoading: colorsLoading,
@@ -40,6 +42,7 @@ export const FiltersBox = () => {
         options={colors?.colors}
         selectedOption={"All car colors"}
         onChange={(e) => {
+          // setSearchParams({ color: e.target.value });
           setColor(e.target.value);
         }}
       />
@@ -48,12 +51,13 @@ export const FiltersBox = () => {
         options={manufacturers}
         selectedOption={"All manufacturers"}
         onChange={(e) => {
+          // setSearchParams({ manufacturer: e.target.value });
           setManufacturer(e.target.value);
         }}
       />
       <div className={"flex justify-center lg:justify-end"}>
         <button
-          onClick={() => console.log(color, manufacturer)}
+          onClick={() => setSearchParams({ color, manufacturer })}
           disabled={colorsLoading || manufacturersLoading}
           className="items-center justify-center w-32 h-8 text-sm font-medium text-center text-white bg-light-orange rounded-sm hover:bg-dark-orange focus:bg-dark-orange mt-3"
         >

@@ -25,7 +25,9 @@ export const Select = ({
         className="relative bg-gray-50 border border-gray-300 text-dark-gray text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         onChange={onChange}
       >
-        <option selected>{selectedOption}</option>
+        <option selected value="">
+          {selectedOption}
+        </option>
         {options.map((item) => {
           return <option value={item}>{item}</option>;
         })}
