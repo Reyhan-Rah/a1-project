@@ -30,10 +30,13 @@ export const CarsList = () => {
           Available Cars
         </h3>
         <p className="mb-6 text-2xl font-normal tracking-tight text-dark-gray dark:text-white">
-          showing 10 of 100 results
+          showing {carsList?.totalCarsCount ? carsList?.cars?.length : 0} of{" "}
+          {carsList?.totalCarsCount} results
         </p>
         {carsListLoading ? (
-          [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(() => <Skeleton />)
+          Array.from(Array(10).keys()).map((i) => (
+            <Skeleton key={"skeleton" + i} />
+          ))
         ) : (
           <>
             {carsList?.cars?.map((car) => (

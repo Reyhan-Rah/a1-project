@@ -1,10 +1,10 @@
 import { FormEvent } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Select } from "../../components/Select";
-import { useGetColors } from "../../api/getColors";
-import { useGetManufacturers } from "../../api/getManufacturers";
-import { Loading } from "../../components/Loading";
-import { NotFound } from "../404";
+import { Select } from "../../../components/Select";
+import { useGetColors } from "../../../api/getColors";
+import { useGetManufacturers } from "../../../api/getManufacturers";
+import { Loading } from "../../../components/Loading";
+import { NotFound } from "../../404";
 
 export const FiltersBox = () => {
   const [, setSearchParams] = useSearchParams();

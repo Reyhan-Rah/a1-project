@@ -1,5 +1,5 @@
 import React from "react";
-import { ICarData } from "../../api/getCarsList";
+import { ICarData } from "../../../api/getCarsList";
 
 export const Card = ({
   stockNumber,
@@ -31,7 +31,13 @@ export const Card = ({
           {color}
         </p>
         <a href={`/${stockNumber}`}>
-          <p className={"text-[#EA7F28] hover:underline"}>View details</p>
+          <p
+            className={
+              "text-light-orange hover:text-dark-orange hover:underline"
+            }
+          >
+            View details
+          </p>
         </a>
       </div>
     </div>
