@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../logo-auto1.svg";
 
-export const Orders = () => {
+export const NotFound = () => {
   return (
     <div className="flex flex-col items-center mx-auto p-8">
       <img
@@ -12,10 +12,10 @@ export const Orders = () => {
         alt="Auto1 logo"
       />
       <h1 className="text-[2rem] font-bold py-8 dark:text-gray-400">
-        My Orders Page
+        404 - Not Found
       </h1>
       <p className="text-lg dark:text-gray-400">
-        The Orders page is not ready yet.
+        Sorry,the page you are looking for does not exist.
       </p>
       <p className="text-lg pt-2 dark:text-gray-400">
         you can always go back to the{" "}

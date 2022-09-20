@@ -1,11 +1,11 @@
 import React from "react";
 import { Outlet, useSearchParams } from "react-router-dom";
-import { Card } from "./card";
-import { useGetCarsList } from "../api/getCarsList";
-import { Skeleton } from "../components/skeleton";
+import { Card } from "./Card";
+import { useGetCarsList } from "../../api/getCarsList";
+import { Skeleton } from "./Skeleton";
 import { NotFound } from "../404";
-import { FiltersBox } from "./filtersBox";
-import { Pagination } from "../components/pagination";
+import { FiltersBox } from "./FiltersBox";
+import { Pagination } from "./Pagination";
 
 export const CarsList = () => {
   let [searchParams] = useSearchParams();

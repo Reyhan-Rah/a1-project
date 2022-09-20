@@ -5,7 +5,7 @@ export const Header = () => {
     <header>
       <nav className="flex bg-white border-gray-200 px-2 sm:px-4 items-center dark:bg-gray-900 h-20">
         <div className="container flex flex-wrap justify-between items-center mx-auto">
-          <a href="src/components/header.tsx" className="flex items-center">
+          <a href="src/components/Header.tsx" className="flex items-center">
             <img
               src={logo}
               className="mr-3 h-6 sm:h-9"

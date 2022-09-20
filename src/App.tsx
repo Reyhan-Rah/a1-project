@@ -1,13 +1,13 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { CarsList } from "./carsList";
-import { CarDetails } from "./carDetails";
-import { Header } from "./components/header";
-import { NotFound } from "./404";
-import { Footer } from "./components/footer";
-import { Purchase } from "./purchase";
-import { Orders } from "./orders";
-import { Sell } from "./sell";
+import { CarsList } from "./routes/CarsList";
+import { CarDetails } from "./routes/CarDetails";
+import { Header } from "./components/Header";
+import { NotFound } from "./routes/404";
+import { Footer } from "./components/Footer";
+import { Purchase } from "./routes/Purchase";
+import { Orders } from "./routes/Orders";
+import { Sell } from "./routes/Sell";
 
 function App() {
   return (

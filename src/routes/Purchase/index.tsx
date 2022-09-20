@@ -1,7 +1,7 @@
 import React from "react";
-import logo from "./logo-auto1.svg";
+import logo from "../../logo-auto1.svg";
 
-export const NotFound = () => {
+export const Purchase = () => {
   return (
     <div className="flex flex-col items-center mx-auto p-8">
       <img
@@ -12,10 +12,10 @@ export const NotFound = () => {
         alt="Auto1 logo"
       />
       <h1 className="text-[2rem] font-bold py-8 dark:text-gray-400">
-        404 - Not Found
+        Purchase Page
       </h1>
       <p className="text-lg dark:text-gray-400">
-        Sorry,the page you are looking for does not exist.
+        The Purchase page is not ready yet.
       </p>
       <p className="text-lg pt-2 dark:text-gray-400">
         you can always go back to the{" "}

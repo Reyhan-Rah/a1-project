@@ -1,5 +1,5 @@
 import React from "react";
-import { ICarData } from "../api/getCarsList";
+import { ICarData } from "../../api/getCarsList";
 
 export const Card = ({
   stockNumber,

@@ -1,6 +1,6 @@
 import React from "react";
-import useGetCarDetails from "../api/getCar";
-import { Loading } from "../components/loading";
+import useGetCarDetails from "../../api/getCar";
+import { Loading } from "../../components/Loading";
 import { useParams } from "react-router-dom";
 import { NotFound } from "../404";
 
