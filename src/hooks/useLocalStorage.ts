@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function getStorageValue(key: string, defaultValue: string) {
   // getting stored value
   const saved = localStorage.getItem(key) || "";
-  const initial = JSON.parse(saved);
-  return initial || defaultValue;
+  if (saved) {
+    return JSON.parse(saved);
+  }
+  return defaultValue;
 }
 
 export const useLocalStorage = (key: string, defaultValue: string) => {
@@ -12,10 +14,10 @@ export const useLocalStorage = (key: string, defaultValue: string) => {
     return getStorageValue(key, defaultValue);
   });
 
-  useEffect(() => {
-    // storing input name
+  const setValueInLocalStorage = (value: string | Record<string, string>) => {
     localStorage.setItem(key, JSON.stringify(value));
-  }, [key, value]);
+    setValue(value);
+  };
 
-  return [value, setValue];
+  return [value, setValueInLocalStorage];
 };
