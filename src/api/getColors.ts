@@ -2,12 +2,8 @@ import { useQuery, UseQueryResult } from "@tanstack/react-query";
 import { baseURL } from "../consts";
 
 export async function getColors() {
-  try {
-    const colors = await fetch(baseURL + "/api/colors", {});
-    return colors.json();
-  } catch (e) {
-    console.debug(e, " e");
-  }
+  const colors = await fetch(baseURL + "/api/colors", {});
+  return colors.json();
 }
 
 export interface IColorsData {

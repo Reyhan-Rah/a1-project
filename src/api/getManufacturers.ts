@@ -2,12 +2,8 @@ import { useQuery, UseQueryResult } from "@tanstack/react-query";
 import { baseURL } from "../consts";
 
 export async function getManufacturers() {
-  try {
-    const manufacturers = await fetch(baseURL + "/api/manufacturers", {});
-    return manufacturers.json();
-  } catch (e) {
-    console.debug(e, " e");
-  }
+  const manufacturers = await fetch(baseURL + "/api/manufacturers", {});
+  return manufacturers.json();
 }
 
 interface IManufacturer {

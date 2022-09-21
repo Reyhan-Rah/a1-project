@@ -3,12 +3,8 @@ import { ICarData } from "./getCarsList";
 import { baseURL } from "../consts";
 
 export async function getCarDetails(stockNumber: number) {
-  try {
-    const carDetails = await fetch(baseURL + "/api/cars/" + stockNumber, {});
-    return carDetails.json();
-  } catch (e) {
-    console.debug(e, " e");
-  }
+  const carDetails = await fetch(baseURL + "/api/cars/" + stockNumber, {});
+  return carDetails.json();
 }
 
 interface ICarDetailsData {
@@ -23,7 +19,6 @@ export default function useGetCarDetails(
     () => getCarDetails(stockNumber),
     {
       staleTime: 50000,
-      enabled: !!stockNumber,
     }
   );
 }
