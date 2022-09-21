@@ -4,10 +4,10 @@ import { renderWithRoute } from "../../../setupTests";
 import { Pagination } from "./index";
 
 describe("Pagination tests", () => {
-  test("Next `page`", async () => {
+  test("Next `page` on the first page", async () => {
     renderWithRoute(<Pagination totalPageCount={10} />);
 
-    const nextButton = screen.getByText(/Next/i);
+    const nextButton = await screen.findByText(/Next/i);
     userEvent.click(nextButton);
 
     const searchParams = new URLSearchParams(window.location.search);
@@ -15,7 +15,7 @@ describe("Pagination tests", () => {
     expect(page).toBe("2");
   });
 
-  test("Last `page`", async () => {
+  test("Last `page` on the first page", async () => {
     renderWithRoute(<Pagination totalPageCount={10} />);
 
     const lastButton = screen.getByText(/Last/i);
@@ -26,19 +26,19 @@ describe("Pagination tests", () => {
     expect(page).toBe("10");
   });
 
-  test("Previous `page`", async () => {
-    renderWithRoute(<Pagination totalPageCount={10} />);
+  test("Previous `page` on the last page", async () => {
+    renderWithRoute(<Pagination totalPageCount={10} />, { route: "/?page=10" });
 
     const previousButton = screen.getByText(/Previous/i);
     userEvent.click(previousButton);
 
     const searchParams = new URLSearchParams(window.location.search);
     const page = searchParams.get("page");
-    expect(page).toBe(null);
+    expect(page).toBe("9");
   });
 
-  test("First `page`", async () => {
-    renderWithRoute(<Pagination totalPageCount={10} />);
+  test("First `page` on the last page", async () => {
+    renderWithRoute(<Pagination totalPageCount={10} />, { route: "/?page=10" });
 
     const firstButton = screen.getByText(/First/i);
     userEvent.click(firstButton);

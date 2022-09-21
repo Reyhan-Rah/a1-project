@@ -4,28 +4,29 @@ interface IPagination {
   totalPageCount: number;
 }
 
-export const Pagination = ({ totalPageCount }: IPagination) => {
+const usePaginationClick = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   let currentPage = parseInt(searchParams.get("page") || "1");
+  const onClick = (page: number) => {
+    const newSearchParams = new URLSearchParams(searchParams);
+    newSearchParams.set("page", String(page));
+    setSearchParams(newSearchParams);
+  };
+  return { currentPage, onClick };
+};
 
+export const Pagination = ({ totalPageCount }: IPagination) => {
+  const { currentPage, onClick } = usePaginationClick();
   return (
     <div className={"inline-flex w-full items-center justify-center "}>
       <button
-        onClick={() => {
-          const newSearchParams = new URLSearchParams(searchParams);
-          newSearchParams.set("page", "1");
-          setSearchParams(newSearchParams);
-        }}
+        onClick={() => onClick(1)}
         className="inline-flex items-center py-2 px-4 text-sm font-medium text-light-orange hover:text-dark-orange hover:underline dark:text-light-gray dark:hover:text-white disabled:text-dark-gray"
       >
         First
       </button>
       <button
-        onClick={() => {
-          const newSearchParams = new URLSearchParams(searchParams);
-          newSearchParams.set("page", String(Math.max(currentPage - 1, 0)));
-          setSearchParams(newSearchParams);
-        }}
+        onClick={() => onClick(Math.max(currentPage - 1, 0))}
         disabled={currentPage === 1}
         className="inline-flex items-center py-2 px-4 text-sm font-medium text-light-orange hover:text-dark-orange hover:underline dark:text-light-gray dark:hover:text-white disabled:text-dark-gray dark:disabled:text-gray-400"
       >
@@ -39,26 +40,16 @@ export const Pagination = ({ totalPageCount }: IPagination) => {
         Page {currentPage} of {totalPageCount}
       </p>
       <button
-        onClick={() => {
-          const newSearchParams = new URLSearchParams(searchParams);
-          newSearchParams.set(
-            "page",
-            String(Math.min(currentPage + 1, totalPageCount))
-          );
-          setSearchParams(newSearchParams);
-        }}
+        onClick={() => onClick(Math.min(currentPage + 1, totalPageCount))}
         className="inline-flex items-center py-2 px-4 text-sm font-medium text-light-orange hover:text-dark-orange hover:underline dark:text-light-gray dark:hover:text-white disabled:text-dark-gray dark:disabled:text-gray-400"
         disabled={currentPage === totalPageCount}
       >
         Next
       </button>
       <button
-        onClick={() => {
-          const newSearchParams = new URLSearchParams(searchParams);
-          newSearchParams.set("page", String(totalPageCount));
-          setSearchParams(newSearchParams);
-        }}
+        onClick={() => onClick(totalPageCount)}
         className="inline-flex items-center py-2 px-4 text-sm font-medium text-light-orange hover:text-dark-orange hover:underline dark:text-light-gray dark:hover:text-white disabled:text-dark-gray"
+        disabled={currentPage === totalPageCount}
       >
         Last
       </button>
