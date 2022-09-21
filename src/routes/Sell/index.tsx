@@ -1,15 +1,9 @@
-import logo from "../../logo-auto1.svg";
+import logo from "../../logo-a1.svg";
 
 export const Sell = () => {
   return (
     <div className="flex flex-col items-center mx-auto p-8">
-      <img
-        className="mt-8"
-        src={logo}
-        width={138}
-        height={28}
-        alt="Auto1 logo"
-      />
+      <img className="mt-8" src={logo} width={138} height={28} alt="logo" />
       <h1 className="text-[2rem] font-bold py-8 dark:text-gray-400">
         Sell Page
       </h1>

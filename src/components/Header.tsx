@@ -1,5 +1,5 @@
 import { useState } from "react";
-import logo from "../logo-auto1.svg";
+import logo from "../logo-a1.svg";
 import { DarkModeButton } from "./DarkModeButton";
 
 export const Header = () => {
@@ -14,7 +14,7 @@ export const Header = () => {
               className="mr-3 h-6 sm:h-9"
               width="138"
               height="28"
-              alt="Auto1 Logo"
+              alt="logo"
             />
           </a>
           <button
