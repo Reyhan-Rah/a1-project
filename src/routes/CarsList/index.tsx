@@ -1,4 +1,3 @@
-import React from "react";
 import { Outlet, useSearchParams } from "react-router-dom";
 import { Card } from "./Card";
 import { useGetCarsList } from "../../api/getCarsList";

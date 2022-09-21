@@ -1,4 +1,3 @@
-import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { CarsList } from "./routes/CarsList";
 import { CarDetails } from "./routes/CarDetails";
