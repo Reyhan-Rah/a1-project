@@ -12,7 +12,7 @@ export async function getCarsList({ ...params }: ICarsListParams) {
   const carsList = await fetch(
     baseURL +
       "/api/cars" +
-      `?page=${params?.page}&color=${params.color}&manufacturer=${params.manufacturer}`,
+      `?page=${params.page}&color=${params.color}&manufacturer=${params.manufacturer}`,
     {}
   );
   return carsList.json();
@@ -41,9 +41,9 @@ export function useGetCarsList(
     [
       "cars",
       {
-        manufacturer: params?.manufacturer,
-        color: params?.color,
-        sort: params?.sort,
+        manufacturer: params.manufacturer,
+        color: params.color,
+        sort: params.sort,
         page: params.page,
       },
     ],

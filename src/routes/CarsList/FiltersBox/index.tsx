@@ -29,7 +29,7 @@ export const FiltersBox = () => {
   if (colorsError || manufacturersError) {
     return <NotFound />;
   }
-  const manufacturers = manufacturersData?.manufacturers.map((item) => {
+  const manufacturers = manufacturersData.manufacturers.map((item) => {
     return item.name;
   });
 
@@ -56,7 +56,7 @@ export const FiltersBox = () => {
       <Select
         name={"color"}
         label={"Color"}
-        options={colors?.colors}
+        options={colors.colors}
         noSelectionTitle={"All car colors"}
       />
       <Select

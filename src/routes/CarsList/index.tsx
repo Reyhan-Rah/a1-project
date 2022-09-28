@@ -29,7 +29,7 @@ export const CarsList = () => {
           Available Cars
         </h3>
         <p className="mb-6 text-2xl font-normal tracking-tight text-dark-gray dark:text-white">
-          showing {carsList?.totalCarsCount ? carsList?.cars?.length : 0} of{" "}
+          showing {carsList?.totalCarsCount ? carsList.cars.length : 0} of{" "}
           {carsList?.totalCarsCount} results
         </p>
         {carsListLoading ? (
