@@ -17,14 +17,20 @@ describe("CarDetailsPage", () => {
     const deleteButton = await screen.findByRole("button", { name: "Delete" });
 
     expect(deleteButton).toBeInTheDocument();
+
+    localStorage.clear();
   });
 
   test("should remove the car from favourites when button is clicked", async () => {
     renderWithRoute(<App />, { route: "/10099" });
+    const saveButton = await screen.findByRole("button", { name: "Save" });
+    fireEvent.click(saveButton);
+
     const deleteButton = await screen.findByRole("button", { name: "Delete" });
     fireEvent.click(deleteButton);
 
-    const saveButton = await screen.findByRole("button", { name: "Save" });
     expect(saveButton).toBeInTheDocument();
+
+    localStorage.clear();
   });
 });
