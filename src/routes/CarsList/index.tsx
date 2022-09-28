@@ -38,21 +38,20 @@ export const CarsList = () => {
           ))
         ) : (
           <>
-            {carsList?.cars?.map((car) => (
-              <Card
-                key={car.stockNumber}
-                stockNumber={car.stockNumber}
-                manufacturerName={car.manufacturerName}
-                modelName={car.modelName}
-                mileage={car.mileage}
-                fuelType={car.fuelType}
-                color={car.color}
-                pictureUrl={car.pictureUrl}
-              />
-            ))}
-            {carsList?.totalPageCount && (
-              <Pagination totalPageCount={carsList.totalPageCount} />
-            )}
+            {!carsListError &&
+              carsList.cars.map((car) => (
+                <Card
+                  key={car.stockNumber}
+                  stockNumber={car.stockNumber}
+                  manufacturerName={car.manufacturerName}
+                  modelName={car.modelName}
+                  mileage={car.mileage}
+                  fuelType={car.fuelType}
+                  color={car.color}
+                  pictureUrl={car.pictureUrl}
+                />
+              ))}
+            <Pagination totalPageCount={carsList?.totalPageCount} />
           </>
         )}
       </div>

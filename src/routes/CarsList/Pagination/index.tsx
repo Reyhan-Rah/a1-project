@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 
 interface IPagination {
-  totalPageCount: number;
+  totalPageCount?: number;
 }
 
 const usePaginationClick = () => {
@@ -17,6 +17,9 @@ const usePaginationClick = () => {
 
 export const Pagination = ({ totalPageCount }: IPagination) => {
   const { currentPage, onClick } = usePaginationClick();
+  if (!totalPageCount) {
+    return null;
+  }
   return (
     <div
       className={
