@@ -7,7 +7,7 @@ import { Loading } from "../../../components/Loading";
 import { NotFound } from "../../404";
 
 export const FiltersBox = () => {
-  const [, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const {
     data: colors,
     isLoading: colorsLoading,
@@ -58,12 +58,14 @@ export const FiltersBox = () => {
         label={"Color"}
         options={colors.colors}
         noSelectionTitle={"All car colors"}
+        defaultValue={searchParams.get("color") || ""}
       />
       <Select
         name={"manufacturer"}
         label={"Manufacturer"}
         options={manufacturers}
         noSelectionTitle={"All manufacturers"}
+        defaultValue={searchParams.get("manufacturer") || ""}
       />
       <div className={"flex justify-center lg:justify-end"}>
         <button
